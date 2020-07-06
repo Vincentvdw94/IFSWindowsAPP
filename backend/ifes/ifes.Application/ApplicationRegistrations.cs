@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using ifes.Application.AutoMappers.Foods;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -8,8 +10,10 @@ using System.Text;
 namespace ifes.Application {
     public static class ApplicationRegistrations {
         public static void RegisterApplication(this IServiceCollection services) {
-            // services.AddAutoMapper(Assembly.GetAssembly(typeof(ApplicationRegistrations)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(ApplicationRegistrations)));
             services.AddMediatR(Assembly.GetAssembly(typeof(ApplicationRegistrations)));
+
+            services.AddScoped<IFoodsMapper, FoodsMapper>();
         }
     }
 }
