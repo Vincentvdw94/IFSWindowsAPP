@@ -1,4 +1,5 @@
-﻿using ifes.Contracts.Commands.Foods;
+﻿using ifes.Application.AutoMappers.Foods;
+using ifes.Contracts.Commands.Foods;
 using ifes.Contracts.Dtos.Foods;
 using ifes.lib.domain;
 using ifes.repo.Repository;
@@ -12,8 +13,10 @@ using System.Threading.Tasks;
 namespace ifes.Application.CommandHandlers.Foods {
     public class AddFoodCommandHandler : IRequestHandler<AddFoodCommand, FoodDto> {
         private readonly IRepository<Food> _foodRepo;
-        public AddFoodCommandHandler(IRepository<Food> foodRepo) {
+        private readonly IFoodsMapper _foodMapper;
+        public AddFoodCommandHandler(IRepository<Food> foodRepo, IFoodsMapper foodMapper) {
             this._foodRepo = foodRepo ?? throw new ArgumentNullException(nameof(foodRepo));
+            this._foodMapper = foodMapper ?? throw new ArgumentNullException(nameof(foodMapper));
 
         }
         public async Task<FoodDto> Handle(AddFoodCommand request, CancellationToken cancellationToken) {
@@ -24,10 +27,10 @@ namespace ifes.Application.CommandHandlers.Foods {
                 Name = request.Name
             };
 
-            _foodRepo.Add(newfood);
-            await _foodRepo.SaveChangesAsync();
+            //_foodRepo.Add(newfood);
+            //await _foodRepo.SaveChangesAsync();
 
-            return  new FoodDto { Name = newfood.Name };
+            return _foodMapper.MapFoodDto(newfood);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ifes.Application.AutoMappers.Foods {
     public interface IFoodsMapper {
 
         List<FoodDto> MapFoodDtos(IEnumerable<Food> foods);
+        FoodDto MapFoodDto(Food food);
     }
 
 }

@@ -13,7 +13,9 @@ namespace ifes.Application {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(ApplicationRegistrations)));
             services.AddMediatR(Assembly.GetAssembly(typeof(ApplicationRegistrations)));
 
+            #region Mappers
             services.AddScoped<IFoodsMapper, FoodsMapper>();
+            #endregion
         }
     }
 }

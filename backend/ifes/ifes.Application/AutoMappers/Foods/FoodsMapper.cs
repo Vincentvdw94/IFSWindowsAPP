@@ -14,6 +14,15 @@ namespace ifes.Application.AutoMappers.Foods {
             });
             _mapper = config.CreateMapper();
         }
+
+        public FoodDto MapFoodDto(Food food) {
+            try {
+                return _mapper.Map<FoodDto>(food);
+            } catch (Exception) {
+
+                throw;
+            }        }
+
         public List<FoodDto> MapFoodDtos(IEnumerable<Food> foods) {
             try {
                 return _mapper.Map<List<FoodDto>>(foods);
