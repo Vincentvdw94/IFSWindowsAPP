@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ifes.Api.Base;
 using ifes.Contracts.Commands.Foods;
+using ifes.Contracts.Queries.Foods;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,5 +26,11 @@ namespace ifes.Controllers
             if (null == addFoodCommand) return BadRequest();
             return await ExecuteRequest(addFoodCommand);
         }
+        [HttpGet]
+        public async Task<IActionResult> Get() {
+            // Adds company to list, returns it for detail page later
+            return await ExecuteRequest(new GetFoodsQuery());
+        }
+
     }
 }

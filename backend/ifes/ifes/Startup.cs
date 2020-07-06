@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ifes.Data;
+using MediatR;
 using ifes.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using ifes.Contracts.Commands.Foods;
+using ifes.Application;
 
 namespace ifes {
     public class Startup {
@@ -30,6 +34,9 @@ namespace ifes {
             services.AddControllers();
             //extension method for all the repositories
             services.RegisterRepositories();
+            services.RegisterApplication();
+
+
             services.AddSwaggerDocumentation();
         }
 
