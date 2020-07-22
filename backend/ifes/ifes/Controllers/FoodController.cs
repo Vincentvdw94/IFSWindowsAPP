@@ -26,12 +26,12 @@ namespace ifes.Controllers {
             return await ExecuteRequest(new GetFoodsQuery());
         }
         [HttpPut]
-        public async Task<IActionResult> Put() {
-            return await ExecuteRequest(null);
+        public async Task<IActionResult> Put([FromBody] UpdateFoodCommand updateFoodCommand) {
+            return await ExecuteRequest(updateFoodCommand);
         }
         [HttpDelete]
-        public async Task<IActionResult> Delete() {
-            return await ExecuteRequest(null);
+        public async Task<IActionResult> Delete(Guid id) {
+            return await ExecuteRequest(new DeleteFoodCommand { Id = id});
         }
 
 
