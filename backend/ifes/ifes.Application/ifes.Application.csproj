@@ -21,4 +21,8 @@
       <ProjectReference Include="..\ifes.repo\ifes.repo.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="QueryHandlers\Seats\" />
+    </ItemGroup>
+
 </Project>
